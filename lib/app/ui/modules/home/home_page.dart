@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:song_collection/app/core/values/assets.dart';
+import 'package:song_collection/app/domain/entities/showcase_header.dart';
 import 'package:song_collection/app/ui/modules/home/local_widgets/home_header.dart';
 import 'package:song_collection/app/ui/modules/showcase/showcase_list.dart';
 
@@ -12,30 +14,36 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        
         child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.grey,
-              Colors.black87,
-            ],
-          )),
-          child: Column(
-            children: [
-              HomeHeader(),
-              RecentlyPlayedWidget(),
-              ShowcaseList(title: "Your Shows", listShowCase: listYourShows,),
-              
-            ],
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.grey,
+                Colors.black87,
+              ],
+            )),
+            child: Column(
+              children: [
+                HomeHeader(),
+                RecentlyPlayedWidget(),
+                ShowcaseList(
+                  header: ShowcaseHeader(
+                    bigTitle: "Tecnology Today",
+                    smallTitle: "Popular with listners of",
+                    imgUrl: Assets.assetBeatles,
+                  ),
+                  listShowCase: listYourShows,
+                ),
+              ],
+            ),
           ),
         ),
-      ),),
+      ),
     );
   }
 }

@@ -9,26 +9,53 @@ class ShowcaseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5),),
+          borderRadius: BorderRadius.all(
+            Radius.circular(5),
+          ),
           child: Image(
-            height: 150,
+            width: 100,
+            height: 100,
             image: AssetImage(showcase.imgUrl),
             fit: BoxFit.fill,
           ),
         ),
         const SizedBox(height: 8.0),
-        Container(
-          height: 32,
-          padding: EdgeInsets.only(top: 8),
-          child: Text(
-            showcase.description,
-            style: TextStyles.smallTextWhite,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
+        showcase.title != null
+            ? Flexible(
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    bottom: 4,
+                  ),
+                  width: 100,
+                  child: Text(
+                    showcase.title!,
+                    style: TextStyles.verySmallTextWhiteBold,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              )
+            : Container(),
+        showcase.description != null
+            ? Flexible(
+                flex: 2,
+                child: Container(
+                  width: 100,
+                  padding: const EdgeInsets.only(
+                    bottom: 8,
+                  ),
+                  child: Text(
+                    showcase.description!,
+                    style: TextStyles.verySmallTextGrayLighter0,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              )
+            : Container(),
       ],
     );
   }

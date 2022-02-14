@@ -1,5 +1,10 @@
 class Showcase {
-  final String description;
+  final String? title;
+  final String? description;
   final String imgUrl;
-  Showcase({required this.description, required this.imgUrl});
+  Showcase({
+    this.title,
+    this.description,
+    required this.imgUrl,
+  });
 }
